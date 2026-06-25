@@ -1,5 +1,6 @@
 import { useFonts } from 'expo-font';
-import BoasVindas from './src/screens/boas-vindas';
+
+import Cadastro from './src/screens/cadastro';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -11,5 +12,5 @@ export default function App() {
     return null;
   }
 
-  return <BoasVindas />;
+  return <Cadastro />;
 }
