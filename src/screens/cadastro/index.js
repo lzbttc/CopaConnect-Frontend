@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { useTeclado } from '../../hooks/use-teclado';
 import {
   StatusBar,
   View,
@@ -26,22 +27,7 @@ import { styles } from './style';
 
 export default function Cadastro({ navigation }) {
   const [senhaVisivel, setSenhaVisivel] = useState(false);
-  const [tecladoAberto, setTecladoAberto] = useState(false);
-
-  useEffect(() => {
-    const mostrar = Keyboard.addListener('keyboardDidShow', () => {
-      setTecladoAberto(true);
-    });
-
-    const esconder = Keyboard.addListener('keyboardDidHide', () => {
-      setTecladoAberto(false);
-    });
-
-    return () => {
-      mostrar.remove();
-      esconder.remove();
-    };
-  }, []);
+  const { tecladoAberto } = useTeclado();
 
   return (
     <Fundo>
