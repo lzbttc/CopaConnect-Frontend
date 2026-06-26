@@ -1,6 +1,6 @@
 import { useFonts } from 'expo-font';
 
-import Cadastro from './src/screens/cadastro';
+import { Rotas } from './src/routes';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -12,5 +12,5 @@ export default function App() {
     return null;
   }
 
-  return <Cadastro />;
+  return <Rotas />;
 }
