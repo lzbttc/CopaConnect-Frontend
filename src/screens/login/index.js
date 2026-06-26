@@ -9,8 +9,6 @@ import {
 import {
   Envelope,
   Lock,
-  Eye,
-  EyeSlash,
 } from 'phosphor-react-native';
 
 import { Fundo } from '../../components/fundo';
@@ -23,7 +21,6 @@ import { Botao } from '../../components/botao';
 import { styles } from './style';
 
 export default function Login({ navigation }) {
-  const [senhaVisivel, setSenhaVisivel] = useState(false);
 
   return (
     <Fundo>
@@ -55,33 +52,12 @@ export default function Login({ navigation }) {
                 keyboardType="email-address"
               />
 
-              <InputFormulario
-                Icon={Lock}
-                placeholder="Senha"
-                secureTextEntry={!senhaVisivel}
-                RightComponent={
-                  <TouchableOpacity
-                    onPress={() =>
-                      setSenhaVisivel(!senhaVisivel)
-                    }
-                  >
-                    {senhaVisivel ? (
-                      <EyeSlash
-                        size={26}
-                        color="rgba(255, 255, 255, 0.38)"
-                        weight="regular"
-                      />
-                    ) : (
-                      <Eye
-                        size={26}
-                        color="rgba(255, 255, 255, 0.38)"
-                        weight="regular"
-                      />
-                    )}
-                  </TouchableOpacity>
-                }
-              />
-            </View>
+            <InputFormulario
+              Icon={Lock}
+              placeholder="Senha"
+              isPassword
+            />
+        </View>
 
             <View style={styles.linkContainer}>
               <TextoLink

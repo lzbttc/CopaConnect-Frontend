@@ -11,8 +11,6 @@ import {
 import {
   Envelope,
   Lock,
-  Eye,
-  EyeSlash,
   User,
   Phone,
 } from 'phosphor-react-native';
@@ -86,28 +84,7 @@ export default function Cadastro({ navigation }) {
               <InputFormulario
                 Icon={Lock}
                 placeholder="Senha"
-                secureTextEntry={!senhaVisivel}
-                RightComponent={
-                  <TouchableOpacity
-                    onPress={() =>
-                      setSenhaVisivel(!senhaVisivel)
-                    }
-                  >
-                    {senhaVisivel ? (
-                      <EyeSlash
-                        size={26}
-                        color="rgba(255,255,255,0.38)"
-                        weight="regular"
-                      />
-                    ) : (
-                      <Eye
-                        size={26}
-                        color="rgba(255,255,255,0.38)"
-                        weight="regular"
-                      />
-                    )}
-                  </TouchableOpacity>
-                }
+                isPassword
               />
             </View>
 

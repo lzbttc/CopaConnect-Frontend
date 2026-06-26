@@ -24,6 +24,7 @@ export const styles = StyleSheet.create({
     color: '#FFFFFF',
 
     fontFamily: 'Changa',
+    fontWeight: 'normal',
     fontSize: 18,
   },
 });
