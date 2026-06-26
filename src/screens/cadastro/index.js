@@ -1,11 +1,8 @@
-import { useState } from 'react';
 import { useTeclado } from '../../hooks/use-teclado';
 import {
   StatusBar,
   View,
   Text,
-  TouchableOpacity,
-  Keyboard,
 } from 'react-native';
 
 import {
@@ -24,7 +21,6 @@ import { Botao } from '../../components/botao';
 import { styles } from './style';
 
 export default function Cadastro({ navigation }) {
-  const [senhaVisivel, setSenhaVisivel] = useState(false);
   const { tecladoAberto } = useTeclado();
 
   return (

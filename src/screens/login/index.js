@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   StatusBar,
   View,
   Text,
-  TouchableOpacity,
 } from 'react-native';
 
 import {
@@ -21,7 +20,6 @@ import { Botao } from '../../components/botao';
 import { styles } from './style';
 
 export default function Login({ navigation }) {
-
   return (
     <Fundo>
       <StatusBar
@@ -52,12 +50,12 @@ export default function Login({ navigation }) {
                 keyboardType="email-address"
               />
 
-            <InputFormulario
-              Icon={Lock}
-              placeholder="Senha"
-              isPassword
-            />
-        </View>
+              <InputFormulario
+                Icon={Lock}
+                placeholder="Senha"
+                isPassword
+              />
+            </View>
 
             <View style={styles.linkContainer}>
               <TextoLink
