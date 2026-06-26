@@ -5,6 +5,8 @@ import { Fundo } from '../../components/fundo';
 import { Logo } from '../../components/logo';
 import { Botao } from '../../components/botao';
 
+import { NomesRotas } from '../../routes/nomes-rotas';
+
 import { styles } from './style';
 
 export default function BoasVindas({ navigation }) {
@@ -24,14 +26,14 @@ export default function BoasVindas({ navigation }) {
         <View style={styles.botoesContainer}>
           <Botao
             titulo="Entre"
-            onPress={() => navigation.navigate('Login')}
+            onPress={() => navigation.navigate(NomesRotas.LOGIN)}
           />
 
           <View style={styles.espacamento} />
 
           <Botao
             titulo="Cadastre-se"
-            onPress={() => navigation.navigate('Cadastro')}
+            onPress={() => navigation.navigate(NomesRotas.CADASTRO)}
           />
         </View>
       </View>

@@ -5,18 +5,20 @@ import BoasVindas from '../screens/boas-vindas';
 import Login from '../screens/login';
 import Cadastro from '../screens/cadastro';
 
+import { NomesRotas } from './nomes-rotas';
+
 const Stack = createNativeStackNavigator();
 
 export function Rotas() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="BoasVindas"
+        initialRouteName={NomesRotas.BOAS_VINDAS}
         screenOptions={{ headerShown: false }}
       >
-        <Stack.Screen name="BoasVindas" component={BoasVindas} />
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Cadastro" component={Cadastro} />
+        <Stack.Screen name={NomesRotas.BOAS_VINDAS} component={BoasVindas} />
+        <Stack.Screen name={NomesRotas.LOGIN} component={Login} />
+        <Stack.Screen name={NomesRotas.CADASTRO} component={Cadastro} />
       </Stack.Navigator>
     </NavigationContainer>
   );
