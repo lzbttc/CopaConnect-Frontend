@@ -10,6 +10,10 @@ export const styles = StyleSheet.create({
     marginLeft: 20,
   },
 
+  voltarContainerTeclado: {
+    marginTop: 30,
+  },
+
   cardContainer: {
     flex: 1,
     marginTop: 40,
@@ -22,9 +26,7 @@ export const styles = StyleSheet.create({
   titulo: {
     fontFamily: 'Bostoncaps',
     fontSize: 60,
-
     color: '#FFFFFF',
-
     textAlign: 'center',
   },
 
@@ -33,8 +35,16 @@ export const styles = StyleSheet.create({
     gap: 20,
   },
 
+  inputsContainerTeclado: {
+    marginTop: 20,
+  },
+
   botaoContainer: {
     marginTop: 50,
     alignItems: 'center',
+  },
+
+  botaoContainerTeclado: {
+    marginTop: 30,
   },
 });

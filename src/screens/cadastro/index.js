@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StatusBar,
   View,
   Text,
   TouchableOpacity,
+  Keyboard,
 } from 'react-native';
 
 import {
@@ -19,13 +20,28 @@ import { Fundo } from '../../components/fundo';
 import { Voltar } from '../../components/voltar';
 import { CardFormulario } from '../../components/card-formulario';
 import { InputFormulario } from '../../components/input-formulario';
-import { TextoLink } from '../../components/texto-link';
 import { Botao } from '../../components/botao';
 
 import { styles } from './style';
 
 export default function Cadastro({ navigation }) {
   const [senhaVisivel, setSenhaVisivel] = useState(false);
+  const [tecladoAberto, setTecladoAberto] = useState(false);
+
+  useEffect(() => {
+    const mostrar = Keyboard.addListener('keyboardDidShow', () => {
+      setTecladoAberto(true);
+    });
+
+    const esconder = Keyboard.addListener('keyboardDidHide', () => {
+      setTecladoAberto(false);
+    });
+
+    return () => {
+      mostrar.remove();
+      esconder.remove();
+    };
+  }, []);
 
   return (
     <Fundo>
@@ -36,7 +52,12 @@ export default function Cadastro({ navigation }) {
       />
 
       <View style={styles.container}>
-        <View style={styles.voltarContainer}>
+        <View
+          style={[
+            styles.voltarContainer,
+            tecladoAberto && styles.voltarContainerTeclado,
+          ]}
+        >
           <Voltar
             onPress={() => navigation.goBack()}
           />
@@ -44,20 +65,27 @@ export default function Cadastro({ navigation }) {
 
         <View style={styles.cardContainer}>
           <CardFormulario>
-            <View style={styles.tituloContainer}>
-              <Text style={styles.titulo}>
-                Cadastro
-              </Text>
-            </View>
+            {!tecladoAberto && (
+              <View style={styles.tituloContainer}>
+                <Text style={styles.titulo}>
+                  Cadastro
+                </Text>
+              </View>
+            )}
 
-            <View style={styles.inputsContainer}>
+            <View
+              style={[
+                styles.inputsContainer,
+                tecladoAberto && styles.inputsContainerTeclado,
+              ]}
+            >
               <InputFormulario
                 Icon={User}
                 placeholder="Nome"
                 keyboardType="default"
               />
 
-             <InputFormulario
+              <InputFormulario
                 Icon={Phone}
                 placeholder="Telefone"
                 keyboardType="phone-pad"
@@ -82,13 +110,13 @@ export default function Cadastro({ navigation }) {
                     {senhaVisivel ? (
                       <EyeSlash
                         size={26}
-                        color="rgba(255, 255, 255, 0.38)"
+                        color="rgba(255,255,255,0.38)"
                         weight="regular"
                       />
                     ) : (
                       <Eye
                         size={26}
-                        color="rgba(255, 255, 255, 0.38)"
+                        color="rgba(255,255,255,0.38)"
                         weight="regular"
                       />
                     )}
@@ -97,7 +125,12 @@ export default function Cadastro({ navigation }) {
               />
             </View>
 
-            <View style={styles.botaoContainer}>
+            <View
+              style={[
+                styles.botaoContainer,
+                tecladoAberto && styles.botaoContainerTeclado,
+              ]}
+            >
               <Botao
                 titulo="Cadastrar"
                 onPress={() => {}}
