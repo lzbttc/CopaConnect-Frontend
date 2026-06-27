@@ -3,4 +3,8 @@ export const NomesRotas = {
   LOGIN: 'Login',
   CADASTRO: 'Cadastro',
   INICIO: 'Inicio',
+  AGENDA_PARTIDAS: 'AgendaPartidas',
+  AMIGOS: 'Amigos',
+  BOLAO: 'Bolao',
+  ESTATISTICAS: 'Estatisticas',
 };

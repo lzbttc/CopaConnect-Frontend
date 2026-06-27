@@ -5,7 +5,8 @@ export const styles = StyleSheet.create({
     width: '100%',
     flex: 1,
 
-    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    backgroundColor: 'rgba(255, 255, 255, 0.12)',
+    borderColor: 'rgba(255, 255, 255, 0.15)',
 
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,

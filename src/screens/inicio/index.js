@@ -1,12 +1,72 @@
 import React from 'react';
-import { StatusBar, View, Text } from 'react-native';
+import { StatusBar, View, Text, ScrollView } from 'react-native';
 
 import { Fundo } from '../../components/fundo';
 import { BarraNavegacao } from '../../components/barra-navegacao';
+import { CardPartidaInicio } from '../../components/card-partida-inicio';
 
 import { styles } from './style';
 
+const partidas = [
+  {
+    id: 1,
+    status: 'AO_VIVO',
+    fase: 'Fase de Grupos',
+    grupo: 'D',
+    minuto: 67,
+    data: '2026-06-18',
+    horario: '16:00',
+    selecaoA: { nome: 'Brasil', codigo: 'BR', gols: 2 },
+    selecaoB: { nome: 'Alemanha', codigo: 'DE', gols: 1 },
+  },
+  {
+    id: 2,
+    status: 'AGENDADA',
+    fase: 'Fase de Grupos',
+    grupo: 'A',
+    minuto: null,
+    data: '2026-06-19',
+    horario: '13:00',
+    selecaoA: { nome: 'França', codigo: 'FR', gols: null },
+    selecaoB: { nome: 'Argentina', codigo: 'AR', gols: null },
+  },
+  {
+    id: 3,
+    status: 'FINALIZADA',
+    fase: 'Fase de Grupos',
+    grupo: 'B',
+    minuto: 90,
+    data: '2026-06-17',
+    horario: '10:00',
+    selecaoA: { nome: 'Espanha', codigo: 'ES', gols: 3 },
+    selecaoB: { nome: 'Portugal', codigo: 'PT', gols: 2 },
+  },
+];
+
+const PRIORIDADE_STATUS = {
+  AO_VIVO: 0,
+  AGENDADA: 1,
+  FINALIZADA: 2,
+};
+
+const TITULO_POR_STATUS = {
+  AO_VIVO: 'Partida Ao Vivo',
+  AGENDADA: 'Próxima Partida',
+  FINALIZADA: 'Última Partida',
+};
+
+function selecionarPartidaDestaque(lista) {
+  return lista.reduce((destaque, atual) => {
+    if (!destaque) return atual;
+    return PRIORIDADE_STATUS[atual.status] < PRIORIDADE_STATUS[destaque.status]
+      ? atual
+      : destaque;
+  }, null);
+}
+
 export default function Inicio({ navigation }) {
+  const partidaDestaque = selecionarPartidaDestaque(partidas);
+
   return (
     <Fundo>
       <StatusBar
@@ -17,10 +77,26 @@ export default function Inicio({ navigation }) {
 
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.logoTexto}>
-            CopaConnect
-          </Text>
+          <Text style={styles.logoTexto}>CopaConnect</Text>
         </View>
+
+        <ScrollView
+          style={styles.scroll}
+          contentContainerStyle={styles.scrollConteudo}
+          showsVerticalScrollIndicator={false}
+        >
+          {partidaDestaque && (
+            <View style={styles.secao}>
+              <Text style={styles.tituloSecao}>
+                {TITULO_POR_STATUS[partidaDestaque.status]}
+              </Text>
+              <CardPartidaInicio
+                partida={partidaDestaque}
+                onPress={() => {}}
+              />
+            </View>
+          )}
+        </ScrollView>
 
         <BarraNavegacao />
       </View>
