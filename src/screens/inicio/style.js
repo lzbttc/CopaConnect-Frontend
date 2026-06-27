@@ -6,24 +6,34 @@ export const styles = StyleSheet.create({
   },
 
   header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+
     paddingHorizontal: 25,
     marginTop: 60,
   },
 
   logoTexto: {
     fontFamily: 'Bostoncaps',
-    fontSize: 30,
+    fontSize: 26,
     color: '#DFFF2B',
+  },
+
+  headerIcones: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
   },
 
   scroll: {
     flex: 1,
-    marginTop: 35,
+    marginTop: 24,
   },
 
   scrollConteudo: {
     paddingHorizontal: 25,
-    paddingBottom: 100,
+    paddingBottom: 140,
     gap: 32,
   },
 

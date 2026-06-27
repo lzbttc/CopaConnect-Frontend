@@ -1,10 +1,13 @@
 import React from 'react';
-import { StatusBar, View, Text, ScrollView } from 'react-native';
+import { StatusBar, View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { Bell } from 'phosphor-react-native';
 
 import { Fundo } from '../../components/fundo';
 import { BarraNavegacao } from '../../components/barra-navegacao';
 import { CardPartidaInicio } from '../../components/card-partida-inicio';
 import { CardBoloesInicio } from '../../components/card-bolaos-inicio';
+import { CardAmigosInicio } from '../../components/card-amigos-inicio';
+import { Avatar } from '../../components/avatar';
 
 import { styles } from './style';
 
@@ -66,6 +69,16 @@ const bolaos = [
   },
 ];
 
+const amigos = [
+  { id: 1, nome: 'Marta G.', online: true },
+  { id: 2, nome: 'Matheus N.', online: true },
+  { id: 3, nome: 'Tiago C.', online: true },
+  { id: 4, nome: 'Carla S.', online: false },
+  { id: 5, nome: 'Bruno L.', online: false },
+  { id: 6, nome: 'Fernanda R.', online: true },
+  { id: 7, nome: 'Ricardo M.', online: false },
+];
+
 const PRIORIDADE_STATUS = {
   AO_VIVO: 0,
   AGENDADA: 1,
@@ -101,6 +114,16 @@ export default function Inicio() {
       <View style={styles.container}>
         <View style={styles.header}>
           <Text style={styles.logoTexto}>CopaConnect</Text>
+
+          <View style={styles.headerIcones}>
+            <TouchableOpacity activeOpacity={0.8} onPress={() => {}}>
+              <Bell size={26} color="#DFFF2B" weight="regular" />
+            </TouchableOpacity>
+
+            <TouchableOpacity activeOpacity={0.8} onPress={() => {}}>
+              <Avatar tamanho={32} />
+            </TouchableOpacity>
+          </View>
         </View>
 
         <ScrollView
@@ -127,6 +150,16 @@ export default function Inicio() {
                 bolaos={bolaos}
                 partida={partidaDestaque}
                 onPressBolao={(bolao) => {}}
+              />
+            </View>
+          )}
+
+          {amigos.length > 0 && (
+            <View style={styles.secao}>
+              <Text style={styles.tituloSecao}>Amigos</Text>
+              <CardAmigosInicio
+                amigos={amigos}
+                onPress={() => {}}
               />
             </View>
           )}
