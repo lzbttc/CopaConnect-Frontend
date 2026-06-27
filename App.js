@@ -1,4 +1,5 @@
 import { useFonts } from 'expo-font';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { Rotas } from './src/routes';
 
@@ -12,5 +13,9 @@ export default function App() {
     return null;
   }
 
-  return <Rotas />;
+  return (
+    <SafeAreaProvider>
+      <Rotas />
+    </SafeAreaProvider>
+  );
 }

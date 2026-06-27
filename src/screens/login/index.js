@@ -17,6 +17,8 @@ import { InputFormulario } from '../../components/input-formulario';
 import { TextoLink } from '../../components/texto-link';
 import { Botao } from '../../components/botao';
 
+import { NomesRotas } from '../../routes/nomes-rotas';
+
 import { styles } from './style';
 
 export default function Login({ navigation }) {
@@ -67,7 +69,7 @@ export default function Login({ navigation }) {
             <View style={styles.botaoContainer}>
               <Botao
                 titulo="Entrar"
-                onPress={() => {}}
+                onPress={() => navigation.navigate(NomesRotas.INICIO)}
               />
             </View>
           </CardFormulario>
