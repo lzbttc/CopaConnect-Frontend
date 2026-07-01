@@ -10,7 +10,11 @@ export function IndicadorNotificacoes({
   color = '#DFFF2B',
   onPress,
 }) {
-  const mostrarBadge = quantidade > 0;
+  const quantidadeSegura = Number.isFinite(quantidade)
+    ? Math.max(0, Math.min(Number(quantidade), 99))
+    : 0;
+  const mostrarBadge = quantidadeSegura > 0;
+  const textoBadge = quantidadeSegura > 99 ? '99+' : String(quantidadeSegura);
 
   const conteudo = (
     <View style={styles.container}>
@@ -18,9 +22,7 @@ export function IndicadorNotificacoes({
 
       {mostrarBadge && (
         <View style={styles.badge}>
-          <Text style={styles.badgeTexto}>
-            {quantidade > 9 ? '9+' : quantidade}
-          </Text>
+          <Text style={styles.badgeTexto}>{textoBadge}</Text>
         </View>
       )}
     </View>
@@ -31,7 +33,12 @@ export function IndicadorNotificacoes({
   }
 
   return (
-    <TouchableOpacity activeOpacity={0.8} onPress={onPress} accessibilityLabel="Notificações">
+    <TouchableOpacity
+      activeOpacity={0.8}
+      onPress={onPress}
+      accessibilityLabel="Notificações"
+      accessibilityRole="button"
+    >
       {conteudo}
     </TouchableOpacity>
   );
