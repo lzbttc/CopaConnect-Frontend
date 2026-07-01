@@ -4,12 +4,14 @@ import Svg, { Path } from 'react-native-svg';
 
 import { styles } from './style';
 
-export function Botao({ titulo, onPress }) {
+export function Botao({ titulo, onPress, accessibilityLabel }) {
   return (
     <TouchableOpacity
       activeOpacity={0.8}
       onPress={onPress}
       style={styles.container}
+      accessibilityRole="button"
+      accessibilityLabel={accessibilityLabel || titulo}
     >
       <View style={styles.botao}>
         <Svg
