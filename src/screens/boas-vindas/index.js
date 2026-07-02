@@ -9,6 +9,7 @@ import { NomesRotas } from '../../routes/nomes-rotas';
 
 import { styles } from './style';
 
+// tela inicial responsável por direcionar o usuário para login ou cadastro
 export default function BoasVindas({ navigation }) {
   return (
     <Fundo>
@@ -26,6 +27,7 @@ export default function BoasVindas({ navigation }) {
         <View style={styles.botoesContainer}>
           <Botao
             titulo="Entre"
+            // direciona o usuário para a autenticação
             onPress={() => navigation.navigate(NomesRotas.LOGIN)}
           />
 
@@ -33,6 +35,7 @@ export default function BoasVindas({ navigation }) {
 
           <Botao
             titulo="Cadastre-se"
+            // direciona o usuário para o cadastro
             onPress={() => navigation.navigate(NomesRotas.CADASTRO)}
           />
         </View>

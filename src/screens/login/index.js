@@ -21,6 +21,7 @@ import { NomesRotas } from '../../routes/nomes-rotas';
 
 import { styles } from './style';
 
+// tela responsável pela autenticação do usuário
 export default function Login({ navigation }) {
   return (
     <Fundo>
@@ -33,6 +34,7 @@ export default function Login({ navigation }) {
       <View style={styles.container}>
         <View style={styles.voltarContainer}>
           <Voltar
+            // navega de volta para a tela de boas vindas
             onPress={() => navigation.goBack()}
           />
         </View>
@@ -61,6 +63,7 @@ export default function Login({ navigation }) {
 
             <View style={styles.linkContainer}>
               <TextoLink
+                // preparado para implementar a recuperação de senha
                 texto="Esqueceu a senha?"
                 onPress={() => {}}
               />
@@ -69,6 +72,7 @@ export default function Login({ navigation }) {
             <View style={styles.botaoContainer}>
               <Botao
                 titulo="Entrar"
+                // futuramente fará a autenticação junto ao backend
                 onPress={() => navigation.navigate(NomesRotas.INICIO)}
               />
             </View>

@@ -3,6 +3,7 @@ import { View, Text, Image } from 'react-native';
 
 import { styles } from './style';
 
+// logo principal utilizada nas telas iniciais da aplicação
 export function Logo() {
   return (
     <View style={styles.container}>

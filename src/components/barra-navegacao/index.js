@@ -14,6 +14,7 @@ import { NomesRotas } from '../../routes/nomes-rotas';
 
 import { styles } from './style';
 
+// centraliza os itens exibidos na navegação inferior
 const itensNavegacao = [
   { rota: NomesRotas.INICIO, icone: House },
   { rota: NomesRotas.AGENDA_PARTIDAS, icone: Calendar },
@@ -22,14 +23,17 @@ const itensNavegacao = [
   { rota: NomesRotas.ESTATISTICAS, icone: ChartBar },
 ];
 
+// barra de navegação compartilhada entre as telas principais
 export function BarraNavegacao() {
   const navigation = useNavigation();
   const { name: rotaAtual } = useRoute();
   const insets = useSafeAreaInsets();
 
   return (
+    // ajusta o espaçamento inferior conforme o dispositivo
     <View style={[styles.container, { paddingBottom: insets.bottom + 14 }]}>
       {itensNavegacao.map(({ rota, icone: Icone }) => {
+        // destaca visualmente a rota atualmente aberta
         const ativo = rotaAtual === rota;
 
         return (

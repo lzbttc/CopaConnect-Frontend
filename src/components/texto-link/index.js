@@ -3,6 +3,7 @@ import { TouchableOpacity, Text } from 'react-native';
 
 import { styles } from './style';
 
+// componente reutilizável para ações exibidas como link
 export function TextoLink({
   texto,
   onPress,

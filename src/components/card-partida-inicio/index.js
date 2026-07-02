@@ -4,12 +4,14 @@ import CountryFlag from 'react-native-country-flag';
 
 import { styles } from './style';
 
+// centraliza os possíveis status utilizados nas partidas
 const STATUS = {
   AO_VIVO: 'AO_VIVO',
   AGENDADA: 'AGENDADA',
   FINALIZADA: 'FINALIZADA',
 };
 
+// componente responsável por exibir a bandeira de cada seleção
 function Bandeira({ codigo, tamanho = 42 }) {
   return (
     <CountryFlag
@@ -20,6 +22,7 @@ function Bandeira({ codigo, tamanho = 42 }) {
   );
 }
 
+// indica visualmente quando a partida está acontecendo
 function IndicadorAoVivo() {
   return (
     <View style={styles.aoVivoContainer}>
@@ -29,13 +32,14 @@ function IndicadorAoVivo() {
   );
 }
 
+// exibe as informações da fase da competição
 function InfoFase({ fase, grupo, status }) {
   return (
     <View style={styles.faseContainer}>
       <Text style={styles.faseTexto}>
         {fase}{grupo ? ` | Grupo ${grupo}` : ''}
       </Text>
-
+      {/* o indicador só aparece quando a partida está em andamento */}
       {status === STATUS.AO_VIVO && (
         <IndicadorAoVivo />
       )}
@@ -43,6 +47,7 @@ function InfoFase({ fase, grupo, status }) {
   );
 }
 
+// exibe as informações principais da partida
 function Placar({ partida }) {
   const { selecaoA, selecaoB, status, minuto } = partida;
 
@@ -71,6 +76,7 @@ function Placar({ partida }) {
   );
 }
 
+// card responsável por exibir a partida em destaque da tela inicial
 export function CardPartidaInicio({ partida, onPress }) {
   return (
     <TouchableOpacity

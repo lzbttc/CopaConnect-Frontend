@@ -4,6 +4,7 @@ import { CaretLeft } from 'phosphor-react-native';
 
 import { styles } from './style';
 
+// botão padrão utilizado para retornar à tela anterior
 export function Voltar({
   onPress,
   size = 36,

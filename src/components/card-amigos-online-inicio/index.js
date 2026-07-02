@@ -5,10 +5,14 @@ import { Avatar } from '../avatar';
 
 import { styles } from './style';
 
+// limita a quantidade de amigos exibidos na tela inicial
 const MAX_AMIGOS_ONLINE = 4;
 
+// exibe um resumo dos amigos que estão online
 export function CardAmigosOnline({ amigosOnline = [], onPress }) {
+  // exibe apenas parte da lista para manter o card compacto
   const amigosVisiveis = amigosOnline.slice(0, MAX_AMIGOS_ONLINE);
+  // calcula quantos amigos ficaram fora da visualização
   const restantes = Math.max( amigosOnline.length - MAX_AMIGOS_ONLINE, 0);
 
   return (
@@ -29,6 +33,7 @@ export function CardAmigosOnline({ amigosOnline = [], onPress }) {
         </View>
       ))}
 
+      {/* informa que existem mais amigos online além dos exibidos */}
       {restantes > 0 && <Text style={styles.restantes}>+ {restantes}</Text>}
     </TouchableOpacity>
   );

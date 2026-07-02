@@ -4,6 +4,7 @@ import { Eye, EyeSlash } from 'phosphor-react-native';
 
 import { styles } from './style';
 
+// campo reutilizável utilizado nos formulários da aplicação
 export function InputFormulario({
   Icon,
   placeholder,
@@ -13,10 +14,12 @@ export function InputFormulario({
   keyboardType = 'default',
   RightComponent,
 }) {
+  // controla a visualização da senha
   const [senhaVisivel, setSenhaVisivel] = useState(false);
   const inputRef = useRef(null);
 
   useEffect(() => {
+    // corrige a atualização do TextInput no Android ao alternar a senha
     if (Platform.OS === 'android' && inputRef.current) {
       inputRef.current.setNativeProps({
         style: StyleSheet.flatten([styles.input]),
@@ -44,6 +47,7 @@ export function InputFormulario({
       />
 
       {isPassword ? (
+        // permite alternar entre mostrar e ocultar a senha
         <TouchableOpacity onPress={() => setSenhaVisivel(!senhaVisivel)}>
           {senhaVisivel ? (
             <EyeSlash size={26} color="rgba(255, 255, 255, 0.38)" weight="regular" />

@@ -12,6 +12,7 @@ const Stack = createNativeStackNavigator();
 
 export function Rotas() {
   return (
+    // centraliza toda a navegação da aplicação
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName={NomesRotas.BOAS_VINDAS}

@@ -4,18 +4,22 @@ import { Bell } from 'phosphor-react-native';
 
 import { styles } from './style';
 
+// limita a quantidade exibida no badge de notificações
 const LIMITE_BADGE = 99;
 
+// componente responsável por exibir as notificações do usuário
 export function IndicadorNotificacoes({
   quantidade = 0,
   size = 26,
   color = '#DFFF2B',
   onPress,
 }) {
+  // garante que o badge sempre trabalhe com um valor válido
   const quantidadeSegura = Number.isFinite(quantidade)
     ? Math.max(0, Number(quantidade))
     : 0;
   const mostrarBadge = quantidadeSegura > 0;
+  // evita que valores muito altos quebrem o layout
   const textoBadge = quantidadeSegura > LIMITE_BADGE ? `${LIMITE_BADGE}+` : String(quantidadeSegura);
 
   const conteudo = (

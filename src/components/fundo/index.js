@@ -2,6 +2,7 @@ import React from 'react';
 import { LinearGradient } from 'expo-linear-gradient';
 import { styles } from './style';
 
+// mantém o mesmo plano de fundo gradiente em todas as telas do aplicativo
 export function Fundo({ children }) {
   return (
     <LinearGradient

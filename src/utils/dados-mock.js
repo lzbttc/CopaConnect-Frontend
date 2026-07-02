@@ -1,4 +1,6 @@
+// dados temporários utilizados enquanto o backend não está integrado
 export const dadosMock = {
+  // lista de partidas utilizada na tela inicial
   partidas: [
     {
       id: 1,
@@ -37,6 +39,8 @@ export const dadosMock = {
       selecaoB: { nome: 'Portugal', codigo: 'PT', gols: 2 },
     },
   ],
+  
+  // estrutura preparada para receber os bolões cadastrados pelo usuário
   boloes: [
     {
       id: 1,
@@ -65,6 +69,8 @@ export const dadosMock = {
       },
     },
   ],
+
+  // simula os amigos online até a integração com a API
   amigos: [
     { id: 1, nome: 'Marta G.', online: true },
     { id: 2, nome: 'Matheus N.', online: true },

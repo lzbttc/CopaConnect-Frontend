@@ -1,3 +1,4 @@
+// centraliza os nomes das rotas para evitar valores duplicados no projeto
 export const NomesRotas = {
   BOAS_VINDAS: 'BoasVindas',
   LOGIN: 'Login',

@@ -20,7 +20,9 @@ import { Botao } from '../../components/botao';
 
 import { styles } from './style';
 
+// tela responsável pelo cadastro de novos usuários
 export default function Cadastro({ navigation }) {
+  // controla os ajustes do layout enquanto o teclado estiver aberto
   const { tecladoAberto } = useTeclado();
 
   return (
@@ -39,12 +41,14 @@ export default function Cadastro({ navigation }) {
           ]}
         >
           <Voltar
+            // navega de volta para a tela de boas vindas
             onPress={() => navigation.goBack()}
           />
         </View>
 
         <View style={styles.cardContainer}>
           <CardFormulario>
+            {/* Oculta o título para aumentar o espaço disponível ao digitar */}
             {!tecladoAberto && (
               <View style={styles.tituloContainer}>
                 <Text style={styles.titulo}>
@@ -92,6 +96,7 @@ export default function Cadastro({ navigation }) {
             >
               <Botao
                 titulo="Cadastrar"
+                // preparado para enviar os dados do usuário ao backend
                 onPress={() => {}}
               />
             </View>

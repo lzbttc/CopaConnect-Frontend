@@ -4,6 +4,7 @@ import Svg, { Path } from 'react-native-svg';
 
 import { styles } from './style';
 
+// botão reutilizável utilizado em toda a aplicação
 export function Botao({ titulo, onPress, accessibilityLabel }) {
   return (
     <TouchableOpacity
@@ -12,6 +13,7 @@ export function Botao({ titulo, onPress, accessibilityLabel }) {
       style={styles.container}
     >
       <View style={styles.botao}>
+        {/* uso de SVG para alcançar formato personalizado do botão */}
         <Svg
           width="100%"
           height="100%"
