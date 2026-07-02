@@ -166,10 +166,10 @@ function ItemBolao({ bolao, partida, onPress }) {
   );
 }
 
-export function CardBoloesInicio({ bolaos, partida, onPressBolao }) {
+export function CardBoloesInicio({ boloes, partida, onPressBolao }) {
   return (
     <View style={styles.container}>
-      {bolaos.map((bolao, index) => (
+      {boloes.map((bolao, index) => (
         <View key={bolao.id}>
           {index > 0 && <View style={styles.divisor} />}
           <ItemBolao

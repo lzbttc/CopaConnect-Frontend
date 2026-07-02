@@ -12,7 +12,7 @@ import { IndicadorNotificacoes } from '../../components/indicador-notificacoes';
 import { styles } from './style';
 import { dadosMock } from '../../utils/dados-mock';
 
-const { partidas, bolaos, amigos: amigosOnline } = dadosMock;
+const { partidas, boloes, amigos: amigosOnline } = dadosMock;
 
 const PRIORIDADE_STATUS = {
   AO_VIVO: 0,
@@ -88,11 +88,11 @@ export default function Inicio() {
             </View>
           )}
 
-          {partidaDestaque && bolaos.length > 0 && (
+          {partidaDestaque && boloes.length > 0 && (
             <View style={styles.secao}>
               <Text style={styles.tituloSecao}>{TITULOS_SECOES.BOLOES}</Text>
               <CardBoloesInicio
-                bolaos={bolaos}
+                boloes={boloes}
                 partida={partidaDestaque}
                 onPressBolao={(bolao) => {}}
               />

@@ -37,7 +37,7 @@ export const dadosMock = {
       selecaoB: { nome: 'Portugal', codigo: 'PT', gols: 2 },
     },
   ],
-  bolaos: [
+  boloes: [
     {
       id: 1,
       nome: 'Família',
