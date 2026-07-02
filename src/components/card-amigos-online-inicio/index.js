@@ -9,7 +9,7 @@ const MAX_AMIGOS_ONLINE = 4;
 
 export function CardAmigosOnline({ amigosOnline = [], onPress }) {
   const amigosVisiveis = amigosOnline.slice(0, MAX_AMIGOS_ONLINE);
-  const restantes = amigosOnline.length - MAX_AMIGOS_ONLINE;
+  const restantes = Math.max( amigosOnline.length - MAX_AMIGOS_ONLINE, 0);
 
   return (
     <TouchableOpacity

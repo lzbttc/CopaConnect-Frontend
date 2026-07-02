@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
 
   logoTexto: {
     fontFamily: 'Bostoncaps',
-    fontSize: 26,
+    fontSize: 35,
     color: '#DFFF2B',
   },
 
@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
 
   scroll: {
     flex: 1,
-    marginTop: 24,
+    marginTop: 28,
   },
 
   scrollConteudo: {

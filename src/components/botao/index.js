@@ -10,8 +10,6 @@ export function Botao({ titulo, onPress, accessibilityLabel }) {
       activeOpacity={0.8}
       onPress={onPress}
       style={styles.container}
-      accessibilityRole="button"
-      accessibilityLabel={accessibilityLabel || titulo}
     >
       <View style={styles.botao}>
         <Svg
