@@ -41,18 +41,28 @@ export const dadosMock = {
     {
       id: 1,
       nome: 'Família',
-      posicao: 1,
       totalParticipantes: 8,
-      pontuacao: 67,
+      posicaoParcial: 1,
+      pontuacaoParcial: 24,
+      posicaoFinal: 2,
+      pontuacaoFinal: 67,
       palpite: { golsSelecaoA: 9, golsSelecaoB: 4 },
+      resultado: {
+        descricao: 'Acertou o placar',
+      },
     },
     {
       id: 2,
       nome: 'Trampo',
-      posicao: 7,
       totalParticipantes: 12,
-      pontuacao: 30,
+      posicaoParcial: 7,
+      pontuacaoParcial: 18,
+      posicaoFinal: 5,
+      pontuacaoFinal: 30,
       palpite: { golsSelecaoA: 5, golsSelecaoB: 2 },
+      resultado: {
+        descricao: 'Acertou vencedor',
+      },
     },
   ],
   amigos: [

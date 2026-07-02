@@ -49,6 +49,11 @@ export const styles = StyleSheet.create({
     color: 'rgba(255, 255, 255, 0.6)',
   },
 
+  linkTexto: {
+    color: '#DFFF2B',
+    textDecorationLine: 'underline',
+  },
+
   itemDireita: {
     alignItems: 'flex-end',
     gap: 2,
