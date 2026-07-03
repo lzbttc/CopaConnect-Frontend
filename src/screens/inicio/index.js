@@ -3,7 +3,7 @@ import { StatusBar, View, Text, ScrollView, TouchableOpacity } from 'react-nativ
 
 import { Fundo } from '../../components/fundo';
 import { BarraNavegacao } from '../../components/barra-navegacao';
-import { CardPartidaInicio } from '../../components/card-partida-inicio';
+import { CardPartida } from '../../components/card-partida';
 import { CardBoloesInicio } from '../../components/card-boloes-inicio';
 import { CardAmigosOnline } from '../../components/card-amigos-online-inicio';
 import { Avatar } from '../../components/avatar';
@@ -94,7 +94,7 @@ export default function Inicio() {
               <Text style={styles.tituloSecao}>
                 {TITULO_POR_STATUS[partidaDestaque.status]}
               </Text>
-              <CardPartidaInicio
+              <CardPartida
                 partida={partidaDestaque}
                 // Futuramente navegará para os detalhes da partida
                 onPress={() => {}}

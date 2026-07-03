@@ -19,50 +19,70 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
 
-    paddingHorizontal: 16,
-    paddingVertical: 10,
+    backgroundColor: 'rgba(0, 0, 0, 0.18)',
 
-    backgroundColor: 'rgba(0, 0, 0, 0.15)',
+    paddingHorizontal: 16,
+    paddingVertical: 12,
   },
 
   faseTexto: {
+    flex: 1,
+
     fontFamily: 'Changa',
     fontSize: 13,
+
     color: 'rgba(255, 255, 255, 0.75)',
+
+    marginRight: 12,
   },
 
   aoVivoContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 5,
+
+    gap: 6,
   },
 
   aoVivoPonto: {
-    width: 7,
-    height: 7,
+    width: 8,
+    height: 8,
+
     borderRadius: 4,
+
     backgroundColor: '#DFFF2B',
   },
 
   aoVivoTexto: {
     fontFamily: 'Changa',
     fontSize: 13,
+
     color: '#DFFF2B',
+  },
+
+  dataPartida: {
+    fontFamily: 'Changa',
+    fontSize: 13,
+
+    color: 'rgba(255, 255, 255, 0.75)',
+
+    textAlign: 'right',
   },
 
   placarContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
 
     paddingHorizontal: 20,
-    paddingVertical: 20,
+    paddingVertical: 22,
   },
 
   selecaoContainer: {
-    alignItems: 'center',
-    gap: 8,
     flex: 1,
+
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    gap: 6,
   },
 
   bandeira: {
@@ -70,31 +90,31 @@ export const styles = StyleSheet.create({
   },
 
   selecaoNome: {
+    width: '100%',
+
     fontFamily: 'Changa',
-    fontSize: 14,
+    fontSize: 15,
+
     color: '#FFFFFF',
+
     textAlign: 'center',
   },
 
   golsContainer: {
-    flex: 1,
-    alignItems: 'center',
+    width: 90,
+
     justifyContent: 'center',
-    gap: 4,
+    alignItems: 'center',
   },
 
   golsTexto: {
     fontFamily: 'Changa',
-    fontSize: 32,
-    color: '#FFFFFF',
-    textAlign: 'center',
-    letterSpacing: 2,
-  },
+    fontSize: 34,
 
-  minutoTexto: {
-    fontFamily: 'Changa',
-    fontSize: 15,
-    color: '#DFFF2B',
+    color: '#FFFFFF',
+
     textAlign: 'center',
+
+    letterSpacing: 2,
   },
 });
