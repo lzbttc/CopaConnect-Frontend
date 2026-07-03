@@ -15,18 +15,18 @@ import { dadosMock } from '../../utils/dados-mock';
 // dados temporários utilizados até a integração com o backend
 const { partidas, boloes, amigos: amigosOnline } = dadosMock;
 
-// define a prioridade da partida exibida na tela inicial
-const PRIORIDADE_STATUS = {
-  AO_VIVO: 0,
-  AGENDADA: 1,
-  FINALIZADA: 2,
+// centraliza os status utilizados nas partidas
+const STATUS = {
+  AO_VIVO: 'AO_VIVO',
+  AGENDADA: 'AGENDADA',
+  FINALIZADA: 'FINALIZADA',
 };
 
 // define o título exibido conforme o status da partida
 const TITULO_POR_STATUS = {
-  AO_VIVO: 'Partida Ao Vivo',
-  AGENDADA: 'Próxima Partida',
-  FINALIZADA: 'Última Partida',
+  [STATUS.AO_VIVO]: 'Partida Ao Vivo',
+  [STATUS.AGENDADA]: 'Próxima Partida',
+  [STATUS.FINALIZADA]: 'Última Partida',
 };
 
 const TITULOS_SECOES = {
@@ -35,26 +35,68 @@ const TITULOS_SECOES = {
 };
 
 const TAMANHO_AVATAR = 32;
+
 // valor inicial utilizado até receber as notificações da API
 const QUANTIDADE_NOTIFICACOES_INICIAL = 3;
 
+// converte data e horário da partida em um objeto Date
+function obterDataHoraPartida({ data, horario }) {
+  return new Date(`${data}T${horario}`);
+}
+
 // busca a partida mais importante para exibição na tela inicial
 function selecionarPartidaDestaque(lista) {
-  return lista.reduce((destaque, atual) => {
-    // a primeira partida da lista inicia a comparação
-    if (!destaque) return atual;
-    return PRIORIDADE_STATUS[atual.status] < PRIORIDADE_STATUS[destaque.status]
-      ? atual
-      : destaque;
-  }, null);
+  if (!lista.length) {
+    return null;
+  }
+
+  // prioriza partidas ao vivo
+  const partidaAoVivo = lista.find(
+    ({ status }) => status === STATUS.AO_VIVO
+  );
+
+  if (partidaAoVivo) {
+    return partidaAoVivo;
+  }
+
+  // busca a próxima partida agendada
+  const partidasAgendadas = lista.filter(
+    ({ status }) => status === STATUS.AGENDADA
+  );
+
+  if (partidasAgendadas.length) {
+    return partidasAgendadas.reduce((proxima, atual) =>
+      obterDataHoraPartida(atual) < obterDataHoraPartida(proxima)
+        ? atual
+        : proxima
+    );
+  }
+
+  // busca a última partida finalizada
+  const partidasFinalizadas = lista.filter(
+    ({ status }) => status === STATUS.FINALIZADA
+  );
+
+  if (partidasFinalizadas.length) {
+    return partidasFinalizadas.reduce((ultima, atual) =>
+      obterDataHoraPartida(atual) > obterDataHoraPartida(ultima)
+        ? atual
+        : ultima
+    );
+  }
+
+  return null;
 }
 
 // tela principal exibida após o login
 export default function Inicio() {
   // seleciona automaticamente a partida que ficará em destaque
   const partidaDestaque = selecionarPartidaDestaque(partidas);
+
   // preparado para receber a quantidade de notificações do backend
-  const [quantidadeNotificacoes] = React.useState(QUANTIDADE_NOTIFICACOES_INICIAL);
+  const [quantidadeNotificacoes] = React.useState(
+    QUANTIDADE_NOTIFICACOES_INICIAL
+  );
 
   return (
     <Fundo>
@@ -75,28 +117,31 @@ export default function Inicio() {
               onPress={() => {}}
             />
 
-            <TouchableOpacity activeOpacity={0.8}
+            <TouchableOpacity
+              activeOpacity={0.8}
               // futuramente abrirá a tela de perfil do usuário
-              onPress={() => {}}>
+              onPress={() => {}}
+            >
               <Avatar tamanho={TAMANHO_AVATAR} />
             </TouchableOpacity>
           </View>
         </View>
 
-        {/* exibe apenas uma partida como destaque na tela inicial */}
         <ScrollView
           style={styles.scroll}
           contentContainerStyle={styles.scrollConteudo}
           showsVerticalScrollIndicator={false}
         >
+          {/* exibe apenas uma partida como destaque na tela inicial */}
           {partidaDestaque && (
             <View style={styles.secao}>
               <Text style={styles.tituloSecao}>
                 {TITULO_POR_STATUS[partidaDestaque.status]}
               </Text>
+
               <CardPartida
                 partida={partidaDestaque}
-                // Futuramente navegará para os detalhes da partida
+                // futuramente navegará para os detalhes da partida
                 onPress={() => {}}
               />
             </View>
@@ -105,7 +150,10 @@ export default function Inicio() {
           {/* exibe os bolões relacionados à partida destacada */}
           {partidaDestaque && boloes.length > 0 && (
             <View style={styles.secao}>
-              <Text style={styles.tituloSecao}>{TITULOS_SECOES.BOLOES}</Text>
+              <Text style={styles.tituloSecao}>
+                {TITULOS_SECOES.BOLOES}
+              </Text>
+
               <CardBoloesInicio
                 boloes={boloes}
                 partida={partidaDestaque}
@@ -115,10 +163,13 @@ export default function Inicio() {
             </View>
           )}
 
-          {/* Lista resumida dos amigos online */}
+          {/* lista resumida dos amigos online */}
           {amigosOnline.length > 0 && (
             <View style={styles.secao}>
-              <Text style={styles.tituloSecao}>{TITULOS_SECOES.AMIGOS}</Text>
+              <Text style={styles.tituloSecao}>
+                {TITULOS_SECOES.AMIGOS}
+              </Text>
+
               <CardAmigosOnline
                 amigosOnline={amigosOnline}
                 // futuramente abrirá a lista completa de amigos
@@ -127,6 +178,7 @@ export default function Inicio() {
             </View>
           )}
         </ScrollView>
+
         {/* barra compartilhada entre as telas principais */}
         <BarraNavegacao />
       </View>
